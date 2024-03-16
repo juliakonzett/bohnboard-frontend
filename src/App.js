@@ -14,11 +14,9 @@ function App() {
 
       getBeans();
     }, []);
-
-    console.log(beans.data);
   return (
     <>
-      <Dashboard></Dashboard>
+      <Dashboard data={beans}></Dashboard>
     </>
   );
 }

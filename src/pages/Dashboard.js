@@ -21,8 +21,10 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Dashboard() {
+export default function Dashboard( { data } ) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const fillLevel = data.fill_level;
+  const timeStamp = data.timestamp;
 
   return (
     <>
@@ -187,7 +189,7 @@ export default function Dashboard() {
 
         <main className="lg:pl-72">
           <div className="px-4 sm:px-6 lg:px-8">
-            <CardGrid />
+            <CardGrid fillLevel={fillLevel} timeStamp={timeStamp} />
           </div>
         </main>
       </div>
