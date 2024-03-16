@@ -1,24 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import Dashboard from './pages/Dashboard';
+import { React, useState, useEffect } from 'react';
+import { fetchData } from './utils/api';
 
 function App() {
+    const [beans, setBeans] = useState([]);
+
+    useEffect(() => {
+      const getBeans = async () => {
+        const beanData = await fetchData();
+        setBeans(beanData);
+      };
+
+      getBeans();
+    }, []);
+
+    console.log(beans.data);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Dashboard></Dashboard>
+    </>
   );
 }
 
